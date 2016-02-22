@@ -6,7 +6,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Welcome Everyone!</div>
+                <div class="title">About Me!</div>
             </div>
         </div>
     </body>

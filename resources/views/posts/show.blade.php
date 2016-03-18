@@ -29,6 +29,12 @@
 						{!! Form::close() !!}
 					</div>
 				</div>
+				<br>
+				<div class="row">
+					<div class="col-sm-12">
+						{!! Html::linkRoute('posts.index', '<<< See All Post', [], array('class' =>'btn btn-blog btn-default btn-block')) !!}
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

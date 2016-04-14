@@ -19,7 +19,7 @@
             {{ Form::label('password_confirmation', "Confirm Password:") }}
             {{ Form::password('password_confirmation', ['class' => 'form-control']) }}
 
-            {{ Form::submit('Login', ['class' => 'btn btn-primary btn-block form-spacing-top']) }}
+            {{ Form::submit('Register', ['class' => 'btn btn-primary btn-block form-spacing-top']) }}
             {!! Form::close() !!}
         </div>
     </div>

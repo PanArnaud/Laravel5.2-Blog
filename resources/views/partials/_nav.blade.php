@@ -32,7 +32,7 @@
             </ul>
           </li>
         @else
-          <a href="{{ route('login') }}" class="btn btn-default">Login</a>
+          <li class=""><a href="{{ route('login') }}" class="t">Login</a></li>
         @endif
       </ul>
     </div><!-- /.navbar-collapse -->

@@ -19,10 +19,10 @@ class PagesController extends Controller
 	public function getAbout()
 	{
 		$first = 'Arnaud';
-		$last = 'Panapadéatchy';
+		$last = 'Pan';
 
 		$fullname = $first." ".$last;
-		$email = 'a.panapadeatchy@hotmail.fr';
+		$email = 'my-awesome@email.com';
 
 		$data = [];
 		$data['email'] = $email;

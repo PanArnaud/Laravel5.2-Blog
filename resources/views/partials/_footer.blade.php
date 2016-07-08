@@ -1,5 +1,5 @@
 <hr>
 
 <p class="text-center">
-	Copyright Arnaud Panapadéatchy - All Rights Reserved
+	2016
 </p>

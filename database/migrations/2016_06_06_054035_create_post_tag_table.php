@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostTableTable extends Migration
+class CreatePostTagTable extends Migration
 {
     /**
      * Run the migrations.

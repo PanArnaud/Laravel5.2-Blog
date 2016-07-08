@@ -24,10 +24,7 @@
 
 Route::group(['middleware' => ['web']], function () {
 	// Authentication routes
-	Route::get('auth/login', [
-		'uses' => 'Auth\AuthController@getLogin',
-		'as' => 'login'
-	]);
+	Route::get('auth/login', ['uses' => 'Auth\AuthController@getLogin','as' => 'login']);
 	Route::post('auth/login', 'Auth\AuthController@postLogin');
 	Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
@@ -42,7 +39,8 @@ Route::group(['middleware' => ['web']], function () {
 
 	// Categories routes
 	Route::resource('categories', 'CategoryController', ['except' => ['create']]);
-
+	// Tags routes
+	Route::resource('tags', 'TagController', ['except' => ['create']]);
 	// Other Pages
 	Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])->where('slug', '[\w\d\-\_]+');
 	Route::get('blog', ['uses' => 'BlogController@getIndex', 'as' => 'blog.index']);

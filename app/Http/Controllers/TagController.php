@@ -81,7 +81,7 @@ class TagController extends Controller
         $tag = Tag::find($id);
         $this->validate($request, ['name' => 'required|max:255']);
         $tag->name = $request->name;
-        $tag->save()
+        $tag->save();
         
         Session::flash('success', 'Successfully update your tag');
 
@@ -96,6 +96,12 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tag = Tag::find($id);
+        $tag->posts()->detach();
+        $tag->delete();
+
+        Session::flash('success', 'Tag was deleted successfully');
+
+        return redirect()->route('tags.index');
     }
 }

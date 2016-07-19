@@ -1,11 +1,11 @@
 @extends('main')
 
-@section('title', "Edit Tag")
+@section('title', "Modifier tag")
 
 @section('content')
 	{{ Form::model($tag, ['route' => ['tags.update', $tag->id], 'method' => "PUT"]) }}
-		{{ Form::label('name', "Title:") }}
+		{{ Form::label('name', "Titre:") }}
 		{{ Form::text('name', null, ['class' => 'form-control']) }}
-		{{ Form::submit('Save change', ['class' => 'btn btn-success', 'style' => "margin-top: 20px;"]) }}
+		{{ Form::submit('Sauvegarder', ['class' => 'btn btn-success', 'style' => "margin-top: 20px;"]) }}
 	{{ Form::close() }}
 @endsection

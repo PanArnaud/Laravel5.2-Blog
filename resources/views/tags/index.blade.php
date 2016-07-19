@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'All Tags')
+@section('title', 'Tout les tags')
 
 @section('content')
     <div class="row">
@@ -10,7 +10,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
+                        <th>Nom</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,10 +27,10 @@
         <div class="col-md-3">
             <div class="well">
                 {!! Form::open(['route' => 'tags.store', 'method' => 'POST']) !!}
-                    <h2>New Tag</h2>
-                    {{ Form::label('name', 'Name:') }}
+                    <h2>Nouveau Tag</h2>
+                    {{ Form::label('name', 'Nom:') }}
                     {{ Form::text('name', null, ['class' => 'form-control']) }}
-                    {{ Form::submit("Create New Tag", ['class' => 'btn btn-primary btn-block btn-h1-spacing']) }}
+                    {{ Form::submit("Créer nouveau tag", ['class' => 'btn btn-primary btn-block btn-h1-spacing']) }}
                 {!! Form::close() !!}
             </div>
         </div>

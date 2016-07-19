@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Tag;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Mail;
@@ -17,7 +18,8 @@ class PagesController extends Controller
 	public function getIndex()
 	{
 		$posts = Post::orderBy('created_at', 'DESC')->limit(4)->get();
-		return view('pages.welcome')->withPosts($posts);
+		$tags = Tag::orderBy('name', 'ASC')->get();
+		return view('pages.welcome')->withPosts($posts)->withTags($tags);
 	}
 
 	public function getAbout()

@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'New Post')
+@section('title', 'nouvel article')
 
 @section('stylesheets')
 	{!! Html::style('css/parsley.css') !!}
@@ -10,16 +10,16 @@
 @section('content')
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			<h1>Create New Post</h1>
+			<h1>Nouvel article</h1>
 			<hr>
 			{!! Form::open(array('route' => 'posts.store', 'data-parsley-validate' => '')) !!}
-				{{ Form::label('title', 'Title:') }}
+				{{ Form::label('title', 'Titre:') }}
 				{{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
 
 				{{ Form::label('slug', 'Slug:') }}
 				{{ Form::text('slug', null, array('class' => 'form-control', 'required' => '', 'minlength' => '5', 'maxlength' =>'255')) }}
 
-				{{ Form::label('category_id', 'Category:') }}
+				{{ Form::label('category_id', 'Catégorie:') }}
 				<select class="form-control" name="category_id">
 					@foreach($categories as $category)
 						<option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -33,10 +33,10 @@
 					@endforeach
 				</select>
 
-				{{ Form::label('body', 'Post Body:') }}
+				{{ Form::label('body', 'Contenu:') }}
 				{{ Form::textarea('body', null, array('class' => 'form-control', 'required' => '')) }}
 
-				{{ Form::submit('Create Post', array('class' => 'btn btn-success btn-lg btn-block', 'style' => 'margin-top: 20px;')) }}
+				{{ Form::submit('Ajouter l\'article', array('class' => 'btn btn-success btn-lg btn-block', 'style' => 'margin-top: 20px;')) }}
 			{!! Form::close() !!}
 		</div>
 	</div>

@@ -1,5 +1,5 @@
 <hr>
 
 <p class="text-center">
-	2016
+	ar-pa | 2016
 </p>

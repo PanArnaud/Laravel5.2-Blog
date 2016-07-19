@@ -1,16 +1,16 @@
 @extends('main')
 
-@section('title', 'All Posts')
+@section('title', 'Tous les articles')
 
 @section('content')
 
 	<div class="row">
 		<div class="col-md-10">
-			<h1>All Posts</h1>
+			<h1>Tout les articles</h1>
 		</div>
 
 		<div class="col-md-2">
-			<a href="{{ route('posts.create') }}" class="btn btn-lg btn-blog btn-primary btn-h1-spacing">Create New Post</a>
+			<a href="{{ route('posts.create') }}" class="btn btn-lg btn-blog btn-primary btn-h1-spacing">Créer un nouvel article</a>
 		</div>
 		
 		<hr>
@@ -20,10 +20,10 @@
 				<table class="table">
 					<thead>
 						<th>#</th>
-						<th>Title</th>
-						<th>Body</th>
-						<th>Created At</th>
-						<th> At</th>
+						<th>Titre</th>
+						<th>Contenu</th>
+						<th>Création</th>
+						<th>Actions</th>
 					</thead>
 
 					<tbody>
@@ -33,7 +33,7 @@
 								<td>{{ $post->title }}</td>
 								<td>{{ substr($post->body, 0, 100) }}{{ strlen($post->body) > 100 ? "..." : "" }}</td>
 								<td>{{ date('j M Y', strtotime($post->created_at)) }}</td>
-								<td><a href="{{ route('posts.show', $post->id) }}" class="btn btn-default btn-sm">View</a> <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-default btn-sm">Edit</a></td>
+								<td><a href="{{ route('posts.show', $post->id) }}" class="btn btn-default btn-sm">Voir</a> <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-default btn-sm">Modifier</a></td>
 							</tr>
 						@endforeach
 					</tbody>

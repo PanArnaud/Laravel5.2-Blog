@@ -1,18 +1,18 @@
 @extends('main')
 
-@section('title', "$tag->name Tag")
+@section('title', $tag->name)
 
 @section('content')
 	<div class="row">
 		<div class="col-md-8">
-			<h1>{{ $tag->name }} Tag <small>{{ $tag->posts->count() }} Posts</small></h1>
+			<h1>{{ $tag->name }} <small>{{ $tag->posts->count() }} article(s)</small></h1>
 		</div>
 		<div class="col-md-2">
-			<a href="{{ route('tags.edit', $tag->id )}}" class="btn btn-primary pull-right btn-block" style="margin-top: 20px;">Edit</a>
+			<a href="{{ route('tags.edit', $tag->id )}}" class="btn btn-primary pull-right btn-block" style="margin-top: 20px;">Modifier</a>
 		</div>
 		<div class="col-md-2">
 			{{ Form::open(['route' => ['tags.destroy', $tag->id], 'method' => 'DELETE']) }}
-				{{ Form::submit('Delete', ['class' => 'btn btn-danger btn-block', 'style' => 'margin-top: 20px;']) }}
+				{{ Form::submit('Supprimer', ['class' => 'btn btn-danger btn-block', 'style' => 'margin-top: 20px;']) }}
 			{{ Form::close() }}
 		</div>
 	</div>
@@ -23,7 +23,7 @@
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Title</th>
+						<th>Titre</th>
 						<th>Tags</th>
 						<th></th>
 					</tr>
@@ -38,7 +38,7 @@
 									<span class="label label-default">{{ $tag->name }}</span>
 								@endforeach
 							</td>
-							<td><a href="{{ route('posts.show', $post->id)}}" class="btn btn-default btn-xs">View</a></td>
+							<td><a href="{{ route('posts.show', $post->id)}}" class="btn btn-default btn-xs">Voir</a></td>
 						</tr>
 					@endforeach
 				</tbody>

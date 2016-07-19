@@ -1,16 +1,16 @@
 @extends('main')
 
-@section('title', 'All Categories')
+@section('title', 'Les catégories')
 
 @section('content')
     <div class="row">
         <div class="col-md-8">
-            <h1>Categories</h1>
+            <h1>Catégories</h1>
             <table class="table">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
+                        <th>Nom</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,10 +27,10 @@
         <div class="col-md-3">
             <div class="well">
                 {!! Form::open(['route' => 'categories.store', 'method' => 'POST']) !!}
-                    <h2>New Category</h2>
-                    {{ Form::label('name', 'Name:') }}
+                    <h3>Nouvelle catégorie</h3>
+                    {{ Form::label('name', 'Nom:') }}
                     {{ Form::text('name', null, ['class' => 'form-control']) }}
-                    {{ Form::submit("Create New Category", ['class' => 'btn btn-primary btn-block btn-h1-spacing']) }}
+                    {{ Form::submit("Ajouter une catégorie", ['class' => 'btn btn-primary btn-block btn-h1-spacing']) }}
                 {!! Form::close() !!}
             </div>
         </div>

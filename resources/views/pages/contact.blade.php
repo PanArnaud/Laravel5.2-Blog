@@ -14,14 +14,14 @@
             <input name="email" type="email" id="email" class="form-control">
           </div>
           <div class="form-group">
-            <label name="subject">Subject:</label>
+            <label name="subject">Sujet:</label>
             <input name="subject" type="subject" id="subject" class="form-control">
           </div>
           <div class="form-group">
             <label name="message">Message:</label>
-            <textarea name="message" id="message" class="form-control" placeholder="Your text"></textarea>
+            <textarea name="message" id="message" class="form-control" placeholder="Votre message"></textarea>
           </div>
-          <input type="submit" value="Send Message" class="btn btn-success">
+          <input type="submit" value="Envoyer le message" class="btn btn-success">
         </form>
     </div>
   </div>

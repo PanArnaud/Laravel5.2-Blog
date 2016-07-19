@@ -6,6 +6,7 @@ use App\Post;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Mail;
+use Session;
 
 /**
 * 
@@ -62,6 +63,6 @@ class PagesController extends Controller
 
 		Session::flash('success', "Your email was sent !");
 
-		return redirect()->url('/');
+		return redirect()->route('contact');
 	}
 }

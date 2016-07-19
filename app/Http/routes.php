@@ -44,7 +44,7 @@ Route::group(['middleware' => ['web']], function () {
 	// Other Pages
 	Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])->where('slug', '[\w\d\-\_]+');
 	Route::get('blog', ['uses' => 'BlogController@getIndex', 'as' => 'blog.index']);
-	Route::get('contact', 'PagesController@getContact');
+	Route::get('contact', ['uses' => 'PagesController@getContact', 'as' => 'contact']);
 	Route::post('contact', 'PagesController@postContact');
 	Route::get('about', 'PagesController@getAbout');
 	Route::get('/', 'PagesController@getIndex');

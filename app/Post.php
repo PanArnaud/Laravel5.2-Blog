@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Jenssegers\Date\Date;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
@@ -17,4 +18,8 @@ class Post extends Model
     public function comments() {
     	return $this->hasMany('App\Comment');
     }
+
+    public function getCreatedAtAttribute($date) {
+    	return Date::parse($date)->format('j F Y');
+   	}
 }

@@ -18,8 +18,7 @@ class PagesController extends Controller
 	public function getIndex()
 	{
 		$posts = Post::orderBy('created_at', 'DESC')->limit(4)->get();
-		$tags = Tag::orderBy('name', 'ASC')->get();
-		return view('pages.welcome')->withPosts($posts)->withTags($tags);
+		return view('pages.welcome')->withPosts($posts);
 	}
 
 	public function getAbout()

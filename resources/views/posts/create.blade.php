@@ -5,6 +5,25 @@
 @section('stylesheets')
 	{!! Html::style('css/parsley.css') !!}
 	{!! Html::style('css/select2.min.css') !!}
+
+	<script src="{{ URL::to('js/tinymce/tinymce.min.js') }}"></script>
+
+	<script>
+		tinymce.init({
+			selector: 'textarea',
+			plugins: [
+		    	'autolink link charmap preview',
+		    	'table paste code image image'
+		  	],
+		  	language : "fr_FR",
+		  	menubar: false,
+		  	toolbar: 
+		  		'undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | tableimage',
+		});
+
+
+	</script>
+
 @endsection
 
 @section('content')
@@ -34,7 +53,7 @@
 				</select>
 
 				{{ Form::label('body', 'Contenu:') }}
-				{{ Form::textarea('body', null, array('class' => 'form-control', 'required' => '')) }}
+				{{ Form::textarea('body', null, array('class' => 'form-control')) }}
 
 				{{ Form::submit('Ajouter l\'article', array('class' => 'btn btn-success btn-lg btn-block', 'style' => 'margin-top: 20px;')) }}
 			{!! Form::close() !!}

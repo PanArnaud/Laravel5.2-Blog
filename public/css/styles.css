@@ -6,6 +6,12 @@
 	margin-top: 15px;
 }
 
+.welcome-photo {
+	height: 300px;
+	margin-left: 15px;
+	margin-bottom: 15px;
+}
+
 .comment {
 	margin-bottom: 45px;
 }

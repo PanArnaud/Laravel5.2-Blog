@@ -7,7 +7,9 @@
 
   <!-- Bootstrap -->
   {{ Html::style('css/bootstrap.css') }}
+  {{ Html::style('css\font-awesome-4.6.3\css\font-awesome.css') }}
   {{ Html::style('css/styles.css') }}
+  
 
   @yield('stylesheets')
 

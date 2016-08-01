@@ -58,11 +58,11 @@
 				</dl>
 				<dl class="dl-horizontal">
 					<label>Création:</label>
-					<p>{{ date('M j, Y G:i', strtotime($post->created_at)) }}</p>
+					<p>{{ $post->getCreatedAtAttribute($post->created_at) }}</p>
 				</dl>
 				<dl class="dl-horizontal">
 					<label>Dernière modification:</label>
-					<p>{{ date('M j, Y G:i', strtotime($post->updated_at)) }}</p>
+					<p>{{ $post->getCreatedAtAttribute($post->updated_at) }}</p>
 				</dl>
 				<hr>
 				<div class="row">

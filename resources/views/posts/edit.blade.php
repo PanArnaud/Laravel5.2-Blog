@@ -29,11 +29,11 @@
 			<div class="well">
 				<dl class="dl-horizontal">
 					<dt>Création:</dt>
-					<dd>{{ date('M j, Y G:i', strtotime($post->created_at)) }}</dd>
+					<dd>{{ $post->getCreatedAtAttribute($post->created_at) }}</dd>
 				</dl>
 				<dl class="dl-horizontal">
 					<dt>Dernière modification:</dt>
-					<dd>{{ date('M j, Y G:i', strtotime($post->updated_at)) }}</dd>
+					<dd>{{ $post->getCreatedAtAttribute($post->updated_at) }}</dd>
 				</dl>
 				<hr>
 				<div class="row">

@@ -19,7 +19,7 @@
 			<div class="col-md-12">
 				<table class="table">
 					<thead>
-						<th>#</th>
+						<th>Statut</th>
 						<th>Titre</th>
 						<th>Contenu</th>
 						<th>Création</th>
@@ -29,7 +29,13 @@
 					<tbody>
 						@foreach($posts as $post)
 							<tr>
-								<th>{{ $post->id }}</th>
+								<td>
+									@if($post->online == 1)
+										<p class="text-success"><strong><i class="fa fa-check" aria-hidden="true"></i></strong></p>
+									@else
+										<p class="text-danger"><strong><i class="fa fa-times" aria-hidden="true"></i></strong></p>
+									@endif
+								</td>
 								<td>{{ $post->title }}</td>
 								<td>{{ substr($post->body, 0, 100) }}{{ strlen($post->body) > 100 ? "..." : "" }}</td>
 								<td>{{ $post->getCreatedAtAttribute($post->created_at) }}</td>

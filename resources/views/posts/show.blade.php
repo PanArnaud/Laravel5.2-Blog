@@ -49,6 +49,12 @@
 		<div class="col-md-4">
 			<div class="well">
 				<dl class="dl-horizontal">
+					<label>Statut: </label>
+					<div class="text-{{ $post->online == 1 ? 'success' : 'danger' }}">
+						<strong>{{ $post->online == 1 ? 'En ligne' : 'Hors ligne' }}</strong>
+					</div>
+				</dl>
+				<dl class="dl-horizontal">
 					<label>Url: </label>
 					<p><a href="{{ route('blog.single', $post->slug)  }}">{{ url('blog/'.$post->slug)  }}</a></p>
 				</dl>

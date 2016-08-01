@@ -24,6 +24,9 @@
 
 			{{ Form::label('body', 'Contenu:', ["class" => 'form-spacing-top']) }}
 			{{ Form::textarea('body', null, ["class" => 'form-control']) }}
+
+			{{ Form::label('online', 'En ligne ?', ["class" => 'form-spacing-top']) }}
+			{{ Form::checkbox('online', 1, $post->online == 1 ? true : false, ["type" => "checkbox"]) }}
 		</div>
 		<div class="col-md-4">
 			<div class="well">

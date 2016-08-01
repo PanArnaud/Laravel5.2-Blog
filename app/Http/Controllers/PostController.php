@@ -66,6 +66,9 @@ class PostController extends Controller
         $post->slug = $request->slug;
         $post->category_id = $request->category_id;
         $post->body = $request->body;
+        if(isset($request->online)) {
+            $post->online = $request->online;
+        }
 
         $post->save();
 
@@ -75,7 +78,7 @@ class PostController extends Controller
             $post->tags->sync(array());
         }
 
-        Session::flash('success', 'The blog post was successfully save!');
+        Session::flash('success', 'L\'article à bien était enregistré!');
 
         // Redirect to another page
         return redirect()->route('posts.show', $post->id);
@@ -145,11 +148,16 @@ class PostController extends Controller
         }
 
         // Save the data into the database
-
         $post->title = $request->input('title');
         $post->slug = $request->input('slug');
         $post->category_id = $request->category_id;
         $post->body = $request->input('body');
+        
+        if(null != $request->input('online')) {
+            $post->online = 1;
+        } else {
+            $post->online = 0;
+        }
 
         $post->save();
 
@@ -160,7 +168,7 @@ class PostController extends Controller
         }
 
         // set flash data with success message
-        Session::flash('success', 'This post was successfully saved.');
+        Session::flash('success', 'Les modifications ont étés enregistrées!');
 
         // Redirect with flash data to posts.show
         return redirect()->route('posts.show', $post->id);
@@ -181,7 +189,7 @@ class PostController extends Controller
 
         $post->delete();
 
-        Session::flash('success', 'This post was successfully deleted.');
+        Session::flash('success', 'L\'article à bien été supprimé.');
 
         return redirect()->route('posts.index');
     }

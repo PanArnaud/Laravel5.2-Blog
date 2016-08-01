@@ -54,6 +54,9 @@
 
 				{{ Form::label('body', 'Contenu:') }}
 				{{ Form::textarea('body', null, array('class' => 'form-control')) }}
+				
+				{{ Form::checkbox('online', 1, array('class' => "checkbox")) }}
+				{{ Form::label('online', 'En ligne ?') }}
 
 				{{ Form::submit('Ajouter l\'article', array('class' => 'btn btn-success btn-lg btn-block', 'style' => 'margin-top: 20px;')) }}
 			{!! Form::close() !!}

@@ -8,8 +8,9 @@
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1>{{ $post->title }} <small>{{ $post->getCreatedAtAttribute($post->created_at) }}</small></h1>
-            <p>{!! $post->body !!}</p>
+            <h1>{{ $post->title }}</h1>
+            <h5>Publié le {{ $post->getCreatedAtAttribute($post->created_at) }}</h5>
+        	<p>{!! $post->body !!}</p>
             <hr>
             <p>Catégorie: {{ $post->category->name }}</p>
         </div>
@@ -17,7 +18,7 @@
 
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			<h3 class="comments-title"><span class="glyphicon glyphicon-comment"></span> {{ $post->comments()->count() }} Commentaire(s)</h3>
+			<h3 class="comments-title"><span class="glyphicon glyphicon-comment"></span>{{ $post->comments()->count() > 1 ? $post->comments()->count().' commentaires' : 'Soyez le premier à réagir !' }}</h3>
 			@foreach($post->comments as $comment)
 				<div class="comment">
 					<div class="author-info">

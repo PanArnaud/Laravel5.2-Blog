@@ -5,11 +5,14 @@
 @section('content')
   <div class="row">
     <div class="col-md-8">
+      <h1>Derniers articles</h1>
       @foreach($posts as $post)
         <div class="post">
           <h3>{{ $post->title }}</h3>
+          <h5>Publié le {{ $post->getCreatedAtAttribute($post->created_at) }}</h5>
           <p>{{ substr($post->body, 0, 300) }}{{ strlen($post->body) > 300 ? "..." : "" }}</p>
           <a href="{{ url('blog/'.$post->slug) }}" class="btn btn-primary">Lire plus</a>
+          <div class="pull-right"><small class="">{{ $post->comments()->count() }} {{ $post->comments()->count() > 1 ? 'commentaires' : 'commentaire' }}</small></div>
         </div>
         <hr>
       @endforeach

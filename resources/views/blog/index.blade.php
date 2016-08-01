@@ -18,6 +18,7 @@
                 <p>{{ substr($post->body, 0, 250) }}{{ strlen($post->body) > 250 ? "..." : "" }}</p>
 
                 <a  class="btn btn-primary" href="{{ route('blog.single', $post->slug) }}">Lire plus</a>
+                <div class="pull-right"><small>{{ $post->comments()->count() }} {{ $post->comments()->count() > 1 ? 'commentaires' : 'commentaire' }}</small></div>
                 <hr>
             </div>
         </div>

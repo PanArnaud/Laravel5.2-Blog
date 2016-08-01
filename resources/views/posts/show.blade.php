@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class="col-md-8">
 			<h1>{{ $post->title }}</h1>
-			<p class="lead">{{ $post->body }}</p>
+			<p class="lead">{!! $post->body !!}</p>
 			<hr>
 			<div class="tags">
 				@foreach($post->tags as $tag)
@@ -78,7 +78,7 @@
 				<br>
 				<div class="row">
 					<div class="col-sm-12">
-						{!! Html::linkRoute('posts.index', '<<< Tout les articles', [], array('class' =>'btn btn-blog btn-default btn-block')) !!}
+						{!! Html::linkRoute('posts.index', '<<< Tout les articles', [], array('class' =>'btn btn-default btn-block')) !!}
 					</div>
 				</div>
 			</div>

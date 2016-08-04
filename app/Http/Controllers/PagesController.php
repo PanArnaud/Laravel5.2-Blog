@@ -23,7 +23,7 @@ class PagesController extends Controller
 
 	public function getAbout()
 	{
-		return view('pages.about')->withData($data);
+		return view('pages.about');
 	}
 
 	public function getContact()

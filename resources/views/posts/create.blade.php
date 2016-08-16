@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'nouvel article')
+@section('title', 'Nouvel article')
 
 @section('stylesheets')
 	{!! Html::style('css/parsley.css') !!}
@@ -20,10 +20,7 @@
 		  	toolbar: 
 		  		'undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | tableimage',
 		});
-
-
 	</script>
-
 @endsection
 
 @section('content')
@@ -31,7 +28,7 @@
 		<div class="col-md-8 col-md-offset-2">
 			<h1>Nouvel article</h1>
 			<hr>
-			{!! Form::open(array('route' => 'posts.store', 'data-parsley-validate' => '')) !!}
+			{!! Form::open(array('route' => 'posts.store', 'data-parsley-validate' => '', 'files' => true)) !!}
 				{{ Form::label('title', 'Titre:') }}
 				{{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
 
@@ -51,6 +48,9 @@
 						<option value="{{ $tag->id }}">{{ $tag->name }}</option>
 					@endforeach
 				</select>
+
+				{{ Form::label('featured_image', 'Image liée:') }}
+				{{ Form::file('featured_image') }}
 
 				{{ Form::label('body', 'Contenu:') }}
 				{{ Form::textarea('body', null, array('class' => 'form-control')) }}

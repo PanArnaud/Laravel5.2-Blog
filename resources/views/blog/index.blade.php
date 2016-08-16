@@ -15,11 +15,11 @@
                 <h2>{{ $post->title }}</h2>
                 <h5>Publié le {{ $post->getCreatedAtAttribute($post->created_at) }}</h5>
 
-                <p>{{ substr($post->body, 0, 250) }}{{ strlen($post->body) > 250 ? "..." : "" }}</p>
+                <p>{{ substr(strip_tags($post->body), 0, 250) }}{{ strlen(strip_tags($post->body)) > 250 ? "..." : "" }}</p>
 
-                <a  class="btn btn-primary" href="{{ route('blog.single', $post->slug) }}">Lire plus</a>
+                <a  class="btn btn-default" href="{{ route('blog.single', $post->slug) }}">Lire plus</a>
                 <div class="pull-right"><small>{{ $post->comments()->count() }} {{ $post->comments()->count() > 1 ? 'commentaires' : 'commentaire' }}</small></div>
-                <hr>
+                <br> <br>
             </div>
         </div>
     @endforeach

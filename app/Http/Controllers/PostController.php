@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Tag;
 use Session;
 use App\Post;
+use Purifier;
+use Image;
 use App\Category;
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -65,9 +67,19 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->slug = $request->slug;
         $post->category_id = $request->category_id;
-        $post->body = $request->body;
+        $post->body = Purifier::clean($request->body);
         if(isset($request->online)) {
             $post->online = $request->online;
+        }
+
+        // Save the image
+        if($request->hasFile('featured_image')) {
+            $image = $request->file('featured_image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('/images/' . $filename);
+            Image::make($image)->resize(800, 400)->save($location);
+
+            $post->image = $filename;
         }
 
         $post->save();
@@ -151,7 +163,7 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->slug = $request->input('slug');
         $post->category_id = $request->category_id;
-        $post->body = $request->input('body');
+        $post->body = Purifier::clean($request->input('body'));
         
         if(null != $request->input('online')) {
             $post->online = 1;

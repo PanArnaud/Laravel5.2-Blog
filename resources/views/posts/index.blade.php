@@ -37,7 +37,7 @@
 									@endif
 								</td>
 								<td>{{ $post->title }}</td>
-								<td>{{ substr($post->body, 0, 100) }}{{ strlen($post->body) > 100 ? "..." : "" }}</td>
+								<td>{{ substr(strip_tags($post->body), 0, 100) }}{{ strlen(strip_tags($post->body)) > 100 ? "..." : "" }}</td>
 								<td>{{ $post->getCreatedAtAttribute($post->created_at) }}</td>
 								<td><a href="{{ route('posts.show', $post->id) }}" class="btn btn-default btn-sm">Voir</a> <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-default btn-sm">Modifier</a></td>
 							</tr>

@@ -6,6 +6,7 @@ use App\Tag;
 use Session;
 use App\Post;
 use Purifier;
+use Storage;
 use Image;
 use App\Category;
 use App\Http\Requests;
@@ -59,6 +60,7 @@ class PostController extends Controller
                 'slug'          => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
                 'category_id'   => 'required|integer',
                 'body'          => 'required',
+                'featured_image'=> 'sometimes|image'
             ));
 
         // Store in the database
@@ -144,20 +146,14 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         // Validate the data
-        if($request->input('slug') == $post->slug){
-            $this->validate($request, array(
-                'title' =>'required|max:255',
-                'category_id'   => 'required|integer',
-                'body' => 'required'
-            ));
-        }else{
-            $this->validate($request, array(
-                'title' =>'required|max:255',
-                'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
-                'category_id'   => 'required|integer',
-                'body' => 'required'
-            ));
-        }
+
+        $this->validate($request, array(
+            'title' =>'required|max:255',
+            'slug' => "required|alpha_dash|min:5|max:255|unique:posts,slug,$id",
+            'category_id'   => 'required|integer',
+            'body' => 'required', 
+            'featured_image' => 'image'
+        ));
 
         // Save the data into the database
         $post->title = $request->input('title');
@@ -165,6 +161,21 @@ class PostController extends Controller
         $post->category_id = $request->category_id;
         $post->body = Purifier::clean($request->input('body'));
         
+        if($request->hasFile('featured_image')) {
+            // Add the new image
+            $image = $request->file('featured_image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('/images/' . $filename);
+            Image::make($image)->resize(800, 400)->save($location);
+            $oldFileName = $post->image;
+
+            // Update the database
+            $post->image = $filename;
+
+            // Delete the old image
+            Storage::delete($oldFileName);
+        }
+
         if(null != $request->input('online')) {
             $post->online = 1;
         } else {
@@ -199,6 +210,10 @@ class PostController extends Controller
         // Delete the relation between tags and this post that will be deleted.
         $post->tags()->detach();
 
+        // Delete the associated image
+        Storage::delete($post->image);
+
+        // And now delete the post
         $post->delete();
 
         Session::flash('success', 'L\'article à bien été supprimé.');

@@ -3,5 +3,9 @@
 /public/storage
 Homestead.yaml
 Homestead.json
+public/css/semantic/components
+public/css/semantic/src
+public/css/semantic/tasks
+public/css/semantic/themes
 .env
 .idea
